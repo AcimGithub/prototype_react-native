@@ -15,20 +15,18 @@ export default function TabLayout() {
         headerShown: false,
       }}>
       <Tabs.Screen
-        name="login"
+        name="index"
         options={{
-          headerShown: false,
-          title: 'Login',
+          title: 'Home',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="welcome"
+        name="explore"
         options={{
-          headerShown: false,
-          title: 'Welcome',
+          title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),

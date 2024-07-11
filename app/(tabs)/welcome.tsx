@@ -31,8 +31,8 @@ const Welcome = () => {
       </View>
       <View style={styles.buttonContainer}>
         <Button
-          title="Go to Home"
-          onPress={() => navigation.navigate('Home')}
+          title="Go to Profile"
+          onPress={() => navigation.navigate('profile')}
           color="#DC3545"
         />
       </View>

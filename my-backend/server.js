@@ -71,6 +71,46 @@ app.post('/audit', (req, res) => {
   });
 });
 
+// Reset password route
+app.post('/profile', (req, res) => {
+  const { token, newPassword } = req.body;
+
+  try {
+    // Verify the token
+    const decoded = jwt.verify(token, 'your_secret_key');
+    const { email } = decoded;
+
+    // Update user's password in database
+    const query = 'UPDATE user SET password = ? WHERE email = ?';
+    db.query(query, [newPassword, email], (err, results) => {
+      if (err) {
+        console.error('Database error:', err);
+        return res.status(500).json({ error: err.message });
+      }
+
+      res.json({ message: 'Password updated successfully' });
+    });
+  } catch (error) {
+    console.error('Token verification error:', error);
+    return res.status(401).json({ error: 'Invalid or expired token' });
+  }
+});
+
+// Register route
+app.post('/register', (req, res) => {
+  const { username, email, password } = req.body;
+
+  // Example: Insert user into database (you need to sanitize and hash passwords in production)
+  const query = 'INSERT INTO user (username, email, password) VALUES (?, ?, ?)';
+  db.query(query, [username, email, password], (err, results) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: 'Failed to register user' });
+    }
+    res.json({ message: 'User registered successfully' });
+  });
+});
+
 app.listen(port, () => {
-  console.log(`Server running on http://192.168.186.122:${port}`);
+  console.log(`Server running on http://192.168.1.7:${port}`);
 });

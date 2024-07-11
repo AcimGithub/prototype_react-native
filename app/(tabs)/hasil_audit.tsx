@@ -11,7 +11,7 @@ const Result = () => {
 
   const fetchData = () => {
     setLoading(true); // Set loading state to true before fetching data
-    axios.get('http://192.168.186.122:3000/hasil_audit')
+    axios.get('http://192.168.1.7:3000/hasil_audit')
       .then(response => {
         console.log('API response:', response.data); // Log the response data
         setData(response.data);

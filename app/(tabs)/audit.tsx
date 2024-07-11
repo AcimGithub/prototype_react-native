@@ -28,7 +28,7 @@ const Audit = () => {
       tanggal_close: tanggalClose.toISOString().split('T')[0], // Format the date to YYYY-MM-DD
     };
 
-    axios.post('http://192.168.186.122:3000/audit', auditData)
+    axios.post('http://192.168.1.7:3000/audit', auditData)
       .then(response => {
         if (response.data.message === 'Audit data inserted successfully') {
           Alert.alert('Success', 'Audit data inserted successfully');
